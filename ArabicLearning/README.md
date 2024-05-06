@@ -1,5 +1,8 @@
 # ArabicLearning
 
+> [!WARNING] 
+> This project has been discontinued around 2022. It has been reuploaded for reference only.
+
 The intention for this project is to be build a website for learning Arabic - in essence, a website for a hypothetical Institute of Arabic. 
 
 The aim is to first cover basic availability of courses, browsing course details and categorising them appropriately. 
