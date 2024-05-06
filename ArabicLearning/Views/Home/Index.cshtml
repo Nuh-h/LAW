@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name.Split('@').First()</h1>
+    @foreach(var c in User.Identities.FirstOrDefault().Claims)
+            {
+                <!--<p>@c.Type : @c.Value # @c.Properties </p> -->
+            }
+    
+    <p class="text-success"> This will be a quick web page about Learning Arabic. The resources, the steps and the journey.</p>
+    <img class="img-fluid card-img" src="https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80"/>
+    @*<img class="img-fluid card-img" src="https://picsum.photos/600/300"/>*@ 
+</div>

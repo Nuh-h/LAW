@@ -1,0 +1,23 @@
+﻿@model IEnumerable<ArabicLearning.Repositories.Models.Course>
+
+<h2 class="align-self-center text-primary">@ViewData["Title"]</h2>
+
+<div class="table-responsive"style="background-image:url('https://images.unsplash.com/photo-1521344151738-afd364618101?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=752&q=80');
+       height:300px;">
+       <p>@Model.First().Name</p>
+    @foreach(var course in Model)
+    {
+        <div class="bg-dark" 
+            style="text-align:center;margin:5%;
+             color:lightcyan; padding:5%">
+                <h4>@course.Name</h4>
+                <p class="font-italic"> by @course.Teacher</p>
+                <!-- <a class="border-success bg-dark text-center" 
+                    style="border-radius:10px; padding:2%; color:lightsalmon"
+                    href="./@course.Level Level"
+                    > @course.Level </a> -->
+        </div>
+    }
+    
+</div>
+

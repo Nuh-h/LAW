@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Courses";
+}
+@model IEnumerable<ArabicLearning.Repositories.Models.Course>
+
+<h2 class="justify-center"> Courses at the Arabic Learning Institute </h2>
+<p class="justify-center text-wrap"> This will be the place for the courses to be displayed in the following order.</p>
+
+<div class="card">
+    <a class="card-title" href="/Courses/Popular">
+        <h3>Popular Courses</h3>
+    </a>
+    <table class="table-hover table-light m-2">
+        <thead>
+            <tr>
+                <th scope="col" > Name </th>
+                <th scope="col"> Teacher </th>
+                <th scope="col"> Year running </th>
+               <!-- <th scope="col"> Level </th> -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var course in Model)
+            {
+                <tr >
+                    <th scope="row"><a href="/Courses/@course.Id/Detail">@course.Name</a></th>
+                    <td >@course.Teacher</td>
+                    <td >@course.StartDate.Year / @course.EndDate.Year</td>
+                <!--    <td >@course.Level</td> -->
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<br />
+<div class="card">
+    <a class="card-title table-hover text-center" href="/Courses/New" style="display:flex; justify-content:space-between;cursor:pointer;">
+        <h3>New Courses </h3>
+    </a>
+    @*<p>SlideShow</p>*@
+    <div class="carousel slide" data-ride="carousel" id="courseSlider">
+        <div class="carousel-inner card d-inline-block text-center">
+            @for(var c = 0; c < Model.Count(); c++)
+            {
+                var val = c == 0 ? " active" : "";
+                var course = Model.ElementAt(c);
+
+                <div class="@(val) card-body text-secondary carousel-item flex" style="background-image:url('https://images.unsplash.com/photo-1616626578044-e5689b3aa390?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80')"}>
+                    <h4 class="card-title text-primary"> <a href="/Courses/@course.Id/Detail">@course.Name</a> </h4>
+                    <!-- <div class="p-2">@course.Type</div> -->
+                    <div></div>
+                    <div class="p-2">by @course.Teacher</div>
+                    @*<div class="card">@course.Level</div>*@
+                </div>
+            }
+        </div>
+        <a class="carousel-control-prev" href="#courseSlider" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon box-shadow "
+                @* style="filter: invert(100%);"  *@
+                aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#courseSlider" role="button" data-slide="next">
+            <span class="carousel-control-next-icon box-shadow"
+                @* style="filter: invert(100%);"  *@
+                aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+

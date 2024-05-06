@@ -1,0 +1,51 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
+
+version: '3.9'
+
+#create a volume for the my sql container.To ensure Data persists after my sql container is stopped
+#volumes:
+#  datafiles:
+
+services:
+
+  #DataBase Service
+  msdatabase:
+    image: mysql
+    ports:
+      - "3306:3306"
+    #volumes:
+    #  - datafiles:/var/lib/mysql
+    #  - "~/sql-scripts/setup.sql:/docker-entrypoint-initdb.d/1.sql"
+    restart: on-failure
+    environment: 
+      MYSQL_ROOT_PASSWORD: passw@rd1234
+      #MYSQL_USER: newuser
+      #MYSQL_PASSWORD: pass@word1234
+      MYSQL_DATABASE: LearningArabicDB
+
+  #Application  Service
+  application:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on: 
+      - msdatabase
+    #command: ["/wait-for-it.sh","msdatabase:3306","--timeout=1000","--","dotnet","ArabicLearning.dll"]
+
+    ports:
+      - "5000:5000"
+      - "8080:80"
+      - "8081:443"
+      - "5001:5001"
+    restart: on-failure
+    environment: 
+      - DBHOST=msdatabase
+      - ASPNETCORE_HTTPS_PORT=5001
+      - DOTNET_GENERATE_ASPNET_CERTIFICATE=true
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DOTNET_USE_POLLING_FILE_WATCHER=true  
+      - ASPNETCORE_URLS=http://+;https://+
+      # - MYSQL_ROOT_PASSWORD=passw@rd1234
+    # volumes:
+      # - ${APPDATA}\microsoft\UserSecrets\:/root/.microsoft/usersecrets
+      # - ${USERPROFILE}\.aspnet\https:/root/.aspnet/https/

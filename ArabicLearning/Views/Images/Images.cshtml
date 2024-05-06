@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Images";
+}
+@model ArabicLearning.Models.Image
+
+    <div class="text-center">
+        <h4> Image Taken by @(Model.author)</h4>
+        <div class="row">
+            <a href="/Images?id=@((Model.id-1<0?4:Model.id-1)%5)"
+                class="col h2 align-self-center float-left">
+                <i class="fas fa-angle-left"></i>
+            </a>
+                
+            <img class="col-10 img-fluid card-img" src=@(Model.url) />
+
+            <a href="/Images?id=@((Model.id+1)%5)"
+                class="col h2 align-self-center float-right">
+                <i class="fas fa-angle-right"></i>
+            </a>
+        </div>
+    </div>

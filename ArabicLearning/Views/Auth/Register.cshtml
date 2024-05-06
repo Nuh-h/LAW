@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+@model ArabicLearning.ViewModels.SignupViewModel
+<h1>Register</h1>
+
+<div class="row">
+    <div class="col-md-5">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn-primary">Register</button>
+        </form>
+
+    </div>
+
+</div>
+<hr/>
+<div class="">Or Signup with the following:</div><hr/>
+<div class="bg-danger bg-gradient p-11 text-decoration-none"
+    style="    display: flex;
+    flex-direction: row;
+    width: 40%;
+    align-items:center;
+    "
+>
+    <img style="width:50px;     padding-right: 2%;" src="https://e7.pngegg.com/pngimages/249/19/png-clipart-google-logo-g-suite-google-guava-google-plus-company-text.png"></img>
+    <a class="text-white" href="googlelogin"> Signup with Google </a>
+
+</div>
+<br/>
+<div class="bg-primary bg-gradient p-11 text-decoration-none"
+    style="    display: flex;
+    flex-direction: row;
+    width: 40%;
+    align-items:center;
+    "
+>
+    <img style="width:50px;     padding-right: 2%;" src="https://driftt.imgix.net/https%3A%2F%2Fdriftt.imgix.net%2Fhttps%253A%252F%252Fs3.amazonaws.com%252Fcustomer-api-avatars-prod%252F137163%252F43075141a7ecafe39f4d474630b64e79vsvzzuyeh9gg%3Ffit%3Dmax%26fm%3Dpng%26h%3D200%26w%3D200%26s%3Dc4f41c1ac0c1689cf714f21e9cbccf19?fit=max&fm=png&h=200&w=200&s=459e40e9b20d07092f3150decb4e14b1"></img>
+    <a class="text-white" href="oktalogin"> Signup with Okta </a>
+
+</div>
